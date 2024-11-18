@@ -1,5 +1,6 @@
 * {
-    margin: 0;
+    margin: 0px;
+    padding: 0;
     box-sizing: border-box;
     /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 }
@@ -7,15 +8,135 @@
 @font-face {
     font-family: 'Lost Late';
     src: 
-         url('lost-late/LOST LATE.ttf') format('truetype'),
+    url('lost-late/LOST LATE.ttf') format('truetype'),
 }
 
 body {
-    background-color: rgba(246, 210, 178, 0.842);
+    font-family: "LOST LATE", Verdana, Geneva, Tahoma, sans-serif;
+}
+.container {
+    margin: 1rem  auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 2fr 1fr 12fr;
+    height: 96vh;
+    width: auto;
+    max-width: 85rem;
+    font-size: 1.2rem;
+    background-color: #9b7c1e32;
 }
 
+.header {
+    background-image: url("/images/books-edited.jpg");
+    background-size: cover;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    padding: 1rem;
+    /* text-shadow: 2px 2px 4px #000000; */
+}
 h2 {
-    margin: 4rem 3rem 3rem 4rem;
-    font-family: "LOST LATE", Verdana, Geneva, Tahoma, sans-serif;
     font-size: 3rem;
+    float: left;
+    padding: 1rem;
+    margin-right: 3rem;
+    border-radius: 50%;
+    background-color: rgb(11, 97, 11);
+    color: rgb(237, 236, 231);
+}
+.header > div {
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-size: 2rem;
+    font-weight: bolder;
+    color: rgb(238, 202, 43);
+    justify-self: baseline;
+    
+}
+
+
+.search {
+    padding: .7rem;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    font-size: 1.5rem;
+    background-color:green;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.search > input {
+    margin-left: 4rem;
+    padding: .5rem;
+    grid-column: 1 / 2;
+}
+
+.search > label {
+    color: rgb(11, 97, 11);
+    font-weight: bold;
+    padding: .3rem;
+    margin-left: 4rem;
+    background-color: rgb(237, 236, 231);
+    grid-column: 2 / 3;
+    text-align: center;
+    justify-content: center;
+}
+
+.sidebar {
+    font-size: 1.3rem;
+    background-color: rgba(236, 234, 234, 0.292);
+    padding: 2rem;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    font-weight: bold;
+    color: rgb(67, 66, 66);
+    text-shadow: 2px 2px 4px white;
+}
+.form-heading{
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    color:  rgb(230, 189, 3);
+}
+
+form > div{
+    margin-bottom: 15px;
+}
+
+.reading {
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 1rem;
+    margin: 10px;
+}
+
+.main-content {
+    font-size: 1.3rem;
+    /* background-color: rgb(242, 233, 233); */
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    padding: 2rem;
+    border: 2px solid rgb(102, 102, 102);
+    font-weight: bold;
+    color: rgb(93, 93, 92);
+    /* text-shadow: 2px 2px 4px white; */
+}
+
+.content-heading {
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    color:  rgb(230, 189, 3);
+    
+}
+
+.section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.book-n {
+    border: 2px solid rgb(108, 107, 107);
+    padding: 20px;
+    background-color: white;
 }
