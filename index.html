@@ -5,10 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Library</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h2>My Library</h2>
-    
+    <div class="container">
+        <div class="header">
+            <h2>My Library</h2>
+            <div>Here is a collection of all the books on my list. Some of them, I have read. New titles from different genres will be added to this list. </div>
+        </div>
+
+        <div class="search">
+            <input type="text" name="search" id="search"  placeholder="Search the book Library">
+            <label for="search">Search</label>
+
+        </div>
+        <div class="sidebar">
+            <div class="form-heading">Add a New Book</div>
+            <div>
+
+                <form action="/" method="post">
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required><br>
+                    </div>
+                    
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author" ><br>
+                    </div>
+                    
+                    <div>
+                        <label for="pages">Pages</label>
+                        <input type="number" id="pages" name="pages"  min="10" max="2000"><br>
+                    </div>
+                    
+                    <div>
+                        <div class="reading">Has this book been read?</div>
+                        <input type="radio" id="read" name="read" >
+                        <label for="not-read">Read</label><br>
+                        <input type="radio" id="not-read" name="not-read">
+                        <label for="not-read">NOt Read Yet</label>
+
+                    </div>
+                    
+                </div>
+
+            </form>
+            <button>Add</button>
+        </div>
+        <div class="main-content">
+            <div class="content-heading">My Book collection</div>
+            <div class="section">
+                <div class="book-n"></div>
+                <div class="book-n"></div>
+                <div class="book-n"></div>
+                <div class="book-n"></div>
+                <div class="book-n"></div>
+                <div class="book-n"></div>
+                <div class="book-n"></div>
+                <div class="book-n"></div>
+                <div class="book-n"></div>
+
+            </div>
+        </div>
+    </div>
+
 
     
 </body>
