@@ -10,23 +10,17 @@
 <body>
     <div class="container">
         <div class="header">
-            <h2>My Library</h2>
-            <div>Here is a collection of all the books on my list. Some of them, I have read. New titles from different genres will be added to this list. </div>
+            <div id="logo">My Library</div>
         </div>
-
-        <div class="search">
-            <input type="text" name="search" id="search"  placeholder="Search the book Library">
-            <label for="search">Search</label>
-
-        </div>
+        
         <div class="sidebar">
             <div class="form-heading">Add a New Book</div>
             <div>
-
+                
                 <form action="/" method="post">
                     <div>
                         <label for="title">Title</label>
-                        <input type="text" id="title" name="title" required><br>
+                        <input type="text" id="title" name="title" placeholder="book title" required><br>
                     </div>
                     
                     <div>
@@ -40,37 +34,37 @@
                     </div>
                     
                     <div>
-                        <div class="reading">Has this book been read?</div>
+                        <div class="book-read">Has this book been read?</div>
                         <input type="radio" id="read" name="read" >
-                        <label for="not-read">Read</label><br>
+                        <label for="read">Read</label>
                         <input type="radio" id="not-read" name="not-read">
                         <label for="not-read">NOt Read Yet</label>
-
                     </div>
-                    
                 </div>
-
             </form>
             <button>Add</button>
         </div>
         <div class="main-content">
-            <div class="content-heading">My Book collection</div>
+            <div class="content-heading">
+                <div class="section-heading">My Book collection</div>
+                <div id="description-text">Bucket list of all the books I plan to read or have read. </div>
+            </div>
             <div class="section">
                 <div class="book-n"></div>
                 <div class="book-n"></div>
                 <div class="book-n"></div>
                 <div class="book-n"></div>
                 <div class="book-n"></div>
-                <div class="book-n"></div>
-                <div class="book-n"></div>
-                <div class="book-n"></div>
-                <div class="book-n"></div>
-
             </div>
+            <div class="search">
+                <input type="text" name="search" id="search"  placeholder="Search the book Library">
+                <label for="search">Search</label>
+            </div>
+            
         </div>
     </div>
-
-
+    
+    
     
 </body>
 </html>
