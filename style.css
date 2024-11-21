@@ -15,128 +15,166 @@ body {
     font-family: "LOST LATE", Verdana, Geneva, Tahoma, sans-serif;
 }
 .container {
-    margin: 1rem  auto;
+    margin: 0rem  auto;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 2fr 1fr 12fr;
-    height: 96vh;
+    grid-template-rows: 4fr 1fr;
+    height: 100vh;
     width: auto;
     max-width: 85rem;
     font-size: 1.2rem;
-    background-color: #9b7c1e32;
 }
 
 .header {
-    background-image: url("/images/books-edited.jpg");
+    background-image: url("/images/reading-outdoors.jpg");
     background-size: cover;
     grid-column: 1 / 3;
     grid-row: 1 / 2;
-    padding: 1rem;
-    /* text-shadow: 2px 2px 4px #000000; */
+    padding: 2rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.622);
 }
-h2 {
-    font-size: 3rem;
-    float: left;
-    padding: 1rem;
-    margin-right: 3rem;
-    border-radius: 50%;
-    background-color: rgb(11, 97, 11);
-    color: rgb(237, 236, 231);
-}
-.header > div {
-    /* font-family: 'Courier New', Courier, monospace; */
+#logo {
     font-size: 2rem;
-    font-weight: bolder;
-    color: rgb(238, 202, 43);
-    justify-self: baseline;
-    
-}
-
-
-.search {
-    padding: .7rem;
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-    font-size: 1.5rem;
-    background-color:green;
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-}
-
-.search > input {
-    margin-left: 4rem;
-    padding: .5rem;
-    grid-column: 1 / 2;
-}
-
-.search > label {
-    color: rgb(11, 97, 11);
+    float:right;
     font-weight: bold;
-    padding: .3rem;
-    margin-left: 4rem;
-    background-color: rgb(237, 236, 231);
-    grid-column: 2 / 3;
-    text-align: center;
-    justify-content: center;
+    padding: 1.5rem;
+    margin-right: 2rem;
+    border-radius: 50%;
+    background-color:rgb(126, 174, 126);
+    color: rgb(248, 247, 242);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.622);
 }
 
 .sidebar {
-    font-size: 1.3rem;
-    background-color: rgba(236, 234, 234, 0.292);
+    font-size: 1.2rem;
+    background-color: rgba(236, 234, 234, 0.423);
     padding: 2rem;
     grid-column: 1 / 2;
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
     font-weight: bold;
     color: rgb(67, 66, 66);
-    text-shadow: 2px 2px 4px white;
+    /* text-shadow: 2px 2px 4px white; */
 }
+
 .form-heading{
     margin-bottom: 25px;
     font-size: 1.6rem;
-    color:  rgb(230, 189, 3);
+    color:  rgb(119, 35, 35);
 }
 
 form > div{
     margin-bottom: 15px;
 }
 
-.reading {
-    margin-bottom: 10px;
+input {
+    margin-left: 0.5rem;
+    padding-left: 0.3rem;
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+input:focus {
+    border: 1px solid rgb(90, 90, 236);
+    background-color: rgba(245, 245, 220, 0.85);
+    box-shadow: 0.4px 6px 6px rgb(176, 173, 173);
+}
+
+.book-read {
+    margin-bottom: 5px;
 }
 
 button {
     font-size: 1rem;
     margin: 10px;
+    background-color: rgb(126, 174, 126);
+    border-color: rgb(126, 174, 126);
+    padding: 0.4rem;
+    border-radius: 15%;
+    color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.382);
+    
 }
 
 .main-content {
     font-size: 1.3rem;
-    /* background-color: rgb(242, 233, 233); */
     grid-column: 2 / 3;
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
     padding: 2rem;
-    border: 2px solid rgb(102, 102, 102);
+    /* border: 2px solid rgb(102, 102, 102); */
     font-weight: bold;
     color: rgb(93, 93, 92);
     /* text-shadow: 2px 2px 4px white; */
+    background-color: rgba(252, 234, 156, 0.127);
 }
 
 .content-heading {
     margin-bottom: 25px;
-    font-size: 1.6rem;
-    color:  rgb(230, 189, 3);
     
 }
 
+.section-heading {
+    font-size: 1.6rem;
+    color:  rgb(119, 35, 35);
+    float: left;
+    padding-right: 2rem;
+    
+}
+
+#description-text {
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: black;
+}
+
+
 .section {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
 }
 
 .book-n {
-    border: 2px solid rgb(108, 107, 107);
+    /* border: 5px solid  rgb(119, 35, 35); */
     padding: 20px;
     background-color: white;
+    height: 15rem;
+    width: 10rem;
+    box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.622);
+    
+}
+
+.section :nth-child(odd) {
+    background-color: rgba(149, 122, 122, 0.1);
+}
+
+.section :nth-child(even) {
+}
+
+.search {
+    padding: .5rem;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    background-color:rgb(126, 174, 126);
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.search > input {
+    margin-left: 2rem;
+    padding: .5rem;
+    grid-column: 1 / 2;
+}
+
+.search > label {
+    color: rgb(11, 97, 11);
+    padding: .3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    background-color: rgb(237, 236, 231);
+    grid-column: 2 / 3;
+    text-align: center;
+    justify-content: center;
 }
