@@ -15,9 +15,8 @@
         
         <div class="sidebar">
             <div class="form-heading">Add a New Book</div>
-            <div>
-                
-                <form action="/" method="post">
+            <div>                
+                <form action="/" onsubmit="return validateForm()" method="post">
                     <div>
                         <label for="title">Title</label>
                         <input type="text" id="title" name="title" placeholder="book title" required><br>
@@ -25,7 +24,7 @@
                     
                     <div>
                         <label for="author">Author</label>
-                        <input type="text" id="author" name="author" ><br>
+                        <input type="text" id="author" name="author" required><br>
                     </div>
                     
                     <div>
@@ -38,11 +37,11 @@
                         <input type="radio" id="read" name="read" >
                         <label for="read">Read</label>
                         <input type="radio" id="not-read" name="not-read">
-                        <label for="not-read">NOt Read Yet</label>
+                        <label for="not-read">Not Read Yet</label>
                     </div>
                 </div>
+                <button type="submit" id="submit-button">Add</button>
             </form>
-            <button>Add</button>
         </div>
         <div class="main-content">
             <div class="content-heading">
@@ -50,11 +49,31 @@
                 <div id="description-text">Bucket list of all the books I plan to read or have read. </div>
             </div>
             <div class="section">
-                <div class="book-n"></div>
-                <div class="book-n"></div>
-                <div class="book-n"></div>
-                <div class="book-n"></div>
-                <div class="book-n"></div>
+                <div class="book-display one">
+                    <p class="display-title">title</p>
+                    <p class="display-author">author</p>
+                    <p class="display-pages">pages</p>
+                </div>
+                <div class="book-display two">
+                    <p class="display-title"></p>
+                    <p class="display-author"></p>
+                    <p class="display-pages"></p>
+                </div>
+                <div class="book-display three">
+                    <p class="display-title"></p>
+                    <p class="display-author"></p>
+                    <p class="display-pages"></p>
+                </div>
+                <div class="book-display four">
+                    <p class="display-title"></p>
+                    <p class="display-author"></p>
+                    <p class="display-pages"></p>
+                </div>
+                <div class="book-display five">
+                    <p class="display-title"></p>
+                    <p class="display-author"></p>
+                    <p class="display-pages"></p>
+                </div>
             </div>
             <div class="search">
                 <input type="text" name="search" id="search"  placeholder="Search the book Library">
