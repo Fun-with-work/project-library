@@ -85,7 +85,7 @@ input:focus {
     margin-bottom: 5px;
 }
 
-button {
+#submit-button {
     font-size: 1rem;
     margin: 10px;
     background-color: rgb(126, 174, 126);
@@ -136,21 +136,43 @@ button {
     gap: 20px;
 }
 
-.book-n {
+.book-display {
     /* border: 5px solid  rgb(119, 35, 35); */
+    display: grid;
+    grid-template-rows: 8rem 2rem 2rem;
     padding: 20px;
     background-color: white;
     height: 15rem;
     width: 10rem;
     box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.622);
-    
+    height: 100%;
 }
 
-.section :nth-child(odd) {
-    background-color: rgba(149, 122, 122, 0.1);
+.section > div:nth-child(odd) {
+    background-color: rgba(149, 122, 122, 0.234);
 }
 
-.section :nth-child(even) {
+.section > div:nth-child(even) {
+    background-color: rgba(153, 197, 121, 0.222);
+}
+
+.display-title {
+    font-size: 1.5rem;
+    align-items: center ;
+    padding: 1rem;
+    grid-row: 1 / 2;
+}
+
+.display-author {
+    font-size: 1.1rem;
+    padding: 1rem 0 1rem 0;
+    grid-row: 2 / 3;
+}
+
+.display-pages {
+    font-size: 1.1rem;
+    padding: 1rem 0 1rem 0;
+    grid-row: 3 / 4;
 }
 
 .search {
