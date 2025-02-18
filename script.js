@@ -41,6 +41,7 @@ function addBookToLibrary(title, author, pages, read) {
         pagesInput.textContent = "";
         readInput.textContent = "";
     }
+    
 
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
@@ -57,13 +58,9 @@ submitButton.addEventListener("click", event => {
 
 
 const book1 = new Book('The Hobbit', "J. R. R. Tolkien", '295 pages', 'not read yet');
-
 const book2 = new Book('To Kill a Mockingbird', 'Harper Lee', '281', 'not read yet');
-
 const book3 = new Book('The Count of Monte Cristo', 'Alexandre Dumas', '1312 pages', 'not read yet');
-
 const book4 = new Book('Great Expectations', 'Charles Dickens', '544 pages', 'not read yet');
-
 const book5 = new Book('Crime and Punishment', 'Fyodor Dostoevsky', '527 pages', 'not read yet');
 
 
@@ -74,37 +71,19 @@ myLibrary.push(book4);
 myLibrary.push(book5);
 
 console.log(myLibrary);
-let n = 1;
+// let n = 0;
 
 function bookPageDisplay (displayTitle, displayAuthor, displayPages) {
-    while (n <6) {
+    for (n=0; n <5; n++) {
         displayTitle[n].textContent = (myLibrary[n].title);
         displayAuthor[n].textContent = (myLibrary[n].author);
         displayPages[n].textContent = (myLibrary[n].pages);  
-        n  += 1; 
+        // n  += 1; 
     }
 }
 
-bookPageDisplay();
+bookPageDisplay(displayTitle, displayAuthor, displayPages);
 
 
 
-// displayTitle[0].textContent = (myLibrary[0].title);
-// displayAuthor[0].textContent = (myLibrary[0].author);
-// displayPages[0].textContent = (myLibrary[0].pages);
 
-// displayTitle[1].textContent = (myLibrary[1].title);
-// displayAuthor[1].textContent = (myLibrary[1].author);
-// displayPages[1].textContent = (myLibrary[1].pages);
-
-// displayTitle[2].textContent = (myLibrary[2].title);
-// displayAuthor[2].textContent = (myLibrary[2].author);
-// displayPages[2].textContent = (myLibrary[2].pages);
-
-// displayTitle[3].textContent = (myLibrary[3].title);
-// displayAuthor[3].textContent = (myLibrary[3].author);
-// displayPages[3].textContent = (myLibrary[3].pages);
-
-// displayTitle[4].textContent = (myLibrary[4].title);
-// displayAuthor[4].textContent = (myLibrary[4].author);
-// displayPages[4].textContent = (myLibrary[4].pages);
