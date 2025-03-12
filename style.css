@@ -161,7 +161,8 @@ input:focus {
 
 
 .content-heading {
-    margin-bottom: 25px;
+    margin-top: 3rem;
+    margin-bottom: 6rem;
     display: flex;
 
 }
@@ -184,12 +185,7 @@ input:focus {
     float: left;
     padding-right: 2rem;
     margin-right: 3rem;
-
 }
-
-/* .section-heading:hover {
-    transform: scale(1.1);
-    } */
 
 #description-text {
     font-family: "Spicy_Rice", Verdana, Geneva, Tahoma, sans-serif;
@@ -199,76 +195,49 @@ input:focus {
     -webkit-text-stroke: 0.05px rgb(134, 133, 133);
 }
 
-/* #description-text:hover {
-    transform: scale(1.1);
-} */
-
+.section-slider {
+    display: flex;
+    width: calc(250PX * 9);
+    animation: scroll 40% linear infinite;
+}
+/* @keyframes scroll */
 
 .section {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 20px;
-    padding-top: 4rem;
-    gap: 5rem;
+    height: 450px;
+    width: 360px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
 }
 
-/* .book-display {
-    color: rgb(112, 29, 29); */
-    /* border: 5px solid rgb(221, 253, 175); */
+.section::before, 
+.section::after {
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
 
-    /* display: grid;
-    grid-template-rows: 6rem 2rem 2rem 2rem;
-    padding: 20px;
-    background-color: rgba(127, 105, 93, 0.844);
-    height: 18rem;
-    width: 10rem;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.622);
-    height: 100%; */
-    /* background-color: gray; */
-/* }
 
+
+.section::before {
+    left: 0;
+    top: 0;
+}
+
+.section::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180 deg);
+}
+
+
+/* /
 .book-display:hover {
     background-color: #9d7943;
     color: white; */
     /*     filter: brightness(135%);*/
 /* } */
 
-/* .section>div:nth-child(odd) { */
-/* background-color: rgba(238, 213, 88, 0.774); */
-/* background-color: gray;
-    }
-    
-    .section>div:nth-child(even) { */
-/* background-color: rgba(72, 133, 28, 0.591); */
-/* background-color: gray;
-    } */
-
-/* .display-title {
-    font-size: 1.6rem;
-    align-items: center;
-    padding: 1rem;
-    grid-row: 1 / 2;
-}
-
-.display-author {
-    font-size: 1.3rem;
-    padding: 1rem 0 1rem 0;
-    grid-row: 2 / 3;
-    color: rgb(28, 27, 27);
-}
-
-.display-pages {
-    font-size: 1rem;
-    padding: 1rem 0 1rem 0;
-    grid-row: 3 / 4;
-    color:  rgb(28, 27, 27);
-}
-
-.display-read {
-    font-size: 1rem;
-    padding: 1rem 0 1rem 0;
-    grid-row: 4 / 5;
-    color:  rgb(28, 27, 27);
-    font-style: italic;
-} */
