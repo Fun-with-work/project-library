@@ -5,6 +5,7 @@ const pagesInput = document.getElementById("pages");
 const readInput = document.getElementById("book-read");
 const submitButton = document.getElementById("submit-button");
 
+let bookId = 0;
 let title;
 let author;
 let pages;
@@ -25,7 +26,9 @@ submitButton.addEventListener("click", function (e) {
     alert("The form can not be submitted.")
 });
 
-function Book(title, author, pages, read) {
+function Book(bookId ,title, author, pages, read) {
+    
+    this.bookId = bookId;
     this.title = title;
     this.author = author;
     this.pages = pages + " pages";
@@ -80,7 +83,6 @@ let book9 = new Book('Frankenstein', 'Mary Shelley', '280', 'read');
 myLibrary.push(book1, book2, book3, book4, book5, book6, book7, book8, book9);
 console.log(myLibrary);
 
-//  oooooooo fix below this oooooooo
 let j = 1;
 
 function bookCards(myLibrary) {
