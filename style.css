@@ -150,7 +150,7 @@ input:focus {
     font-size: 1.3rem;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    padding: 2rem;
+    /* padding: 2rem; */
     /* border: 2px solid rgb(102, 102, 102); */
     font-weight: bold;
     color: rgb(93, 93, 92);
@@ -159,8 +159,7 @@ input:focus {
 }
 
 .content-heading {
-    margin-top: 3rem;
-    margin-bottom: 6rem;
+    margin: 3rem 0 3rem 2rem;
     display: flex;
 }
 
@@ -193,8 +192,24 @@ input:focus {
 }
 
 .slider {
+    height: 40rem;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    overflow: auto;
+}
+
+
+.section {
+    /* height: 450px;
+    width: 360px; */
     display: flex;
-    width: calc(250PX * 9);
+    /* align-items: center; */
+    /* padding: 15px; */
+
+    width: calc(250PX * 10);
     animation: scroll 40% linear infinite;
 }
 
@@ -203,21 +218,13 @@ input:focus {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-250px * 4));
+        transform: translateX(calc(-250px * 9));
     }
-}
-
-.section {
-    height: 450px;
-    width: 360px;
-    display: flex;
-    align-items: center;
-    padding: 15px;
 }
 
 .section::before, 
 .section::after {
-    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(to right, rgb(184, 181, 181) 0%, rgba(255,255,255,0) 100%);
     content: "";
     height: 100%;
     position: absolute;
