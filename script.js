@@ -5,33 +5,48 @@ const pagesInput = document.getElementById("pages");
 const readInput = document.getElementById("book-read");
 const submitButton = document.getElementById("submit-button");
 const section = document.getElementById("section");
+const sliderButtons = document.querySelectorAll
 
-// let bookId = 0;
 let title;
 let author;
 let pages;
 let read;
+const bookId = " ";
 let bookCard;
 let displayTitle;
 let displayAuthor;
 let displayPages;
 let displayRead;
+let removeBook;
+let changeRead;
 
 // const readStatus = document.createElement("button");
 
 const myLibrary = [];
+
+
+// displayRead.addEventListener("click", function (e) {
+//      if (displayRead=== "read") {
+//         displayRead = "not read";
+//         title.textContent = "not read";
+//     } else {
+//             displayRead = "read";
+//             title.textContent = "read";
+//      }
+//      return;
+// });
 
 submitButton.addEventListener("click", function (e) {
     e.preventDefault();
     alert("The form can not be submitted.")
 });
 
-function Book(title, author, pages, read) {
-    // this.bookId = bookId;
+function Book(title, author, pages, read, _bookId) {
     this.title = title;
     this.author = author;
     this.pages = pages + " pages";
     this.read = read;
+    this.bookId = crypto.randomUUID();
     return;
 }
 
@@ -44,6 +59,7 @@ function addBookToLibrary(title, author, pages, read) {
         author.textContent = authorInput.textContent;
         pages.textContent = pagesInput.textContent;
         read.textContent = readInput.textContent;
+        bookId = crypto.randomUUID();
 
         titleInput.textContent = "";
         authorInput.textContent = "";
@@ -51,7 +67,7 @@ function addBookToLibrary(title, author, pages, read) {
         readInput.textContent = "";
     }
 
-    let book = new Book(title, author, pages, read);
+    let book = new Book(title, author, pages, read, bookId);
     myLibrary.push(book);
     book = "";
     return;
@@ -85,28 +101,28 @@ console.log(myLibrary);
 let j = 1;
 
 function bookCards(myLibrary) {
-    for (i = 0; i <= 8; i++) {
+    for (i = 0; i < myLibrary.length; i++) {
         bookCard = document.createElement("ul");
         displayTitle = document.createElement("li");
         displayAuthor = document.createElement("li");
         displayPages = document.createElement("li");
         displayRead = document.createElement("li");
+        changeRead = document.createElement("button");
+        // changeRead.textContent = ("read status");
 
         bookCard.style.listStyle = "none";
         bookCard.style.display = "grid";
-        bookCard.style.gridTemplateRows = "6rem 2rem 2rem 2rem";
+        bookCard.style.gridTemplateRows = "6rem 2rem 2rem";
         bookCard.style.padding = "0.001px";
         bookCard.style.borderRadius = "8px";
-        bookCard.style.backgroundImage= "linear-gradient(to bottom right,rgb(21, 37, 3), rgb(41, 71, 6))";
-        // bookCard.style.height = "18rem";
-        // bookCard.style.width = "10rem";
+        bookCard.style.backgroundImage = "linear-gradient(to bottom right,rgb(21, 37, 3), rgb(41, 71, 6))";
         bookCard.style.boxShadow = "5px 5px 20px rgba(0, 0, 0, 0.622)";
-        
+
         bookCard.style.minHeight = "24rem";
         bookCard.style.minWidth = "16rem";
         bookCard.style.width = "100%";
         bookCard.style.margin = "20px";
-        
+
         displayTitle.style.fontSize = "2rem";
         displayTitle.style.alignItems = "center";
         displayTitle.style.gridRow = "1 / 2";
@@ -121,6 +137,7 @@ function bookCards(myLibrary) {
         Object.assign(displayAuthor.style, styles)
         Object.assign(displayPages.style, styles)
         Object.assign(displayRead.style, styles)
+        // Object.assign(changeRead.style, styles)
 
         displayAuthor.style.gridRow = "2 / 3";
         displayPages.style.gridRow = "3 / 4";
@@ -131,6 +148,7 @@ function bookCards(myLibrary) {
         bookCard.appendChild(displayAuthor);
         bookCard.appendChild(displayPages);
         bookCard.appendChild(displayRead);
+        // displayRead.appendChild(changeRead);
 
         displayTitle.textContent = (myLibrary[j - 1].title);
         displayAuthor.textContent = (myLibrary[j - 1].author);
@@ -141,12 +159,9 @@ function bookCards(myLibrary) {
     return;
 }
 
-// function bookPageDisplay(displayTitle, displayAuthor, displayPages, displayRead) {
-//     for (let i = 0; i <= myLibrary.length; i++) {
-//     } return;
-// }
-
 bookCards(myLibrary);
 
-// bookPageDisplay(displayTitle, displayAuthor, displayPages, displayRead);
+// displayRead.addEventListener('mouseover', () => {
+     
+//   });
 
