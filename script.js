@@ -1,10 +1,10 @@
 const form = document.getElementById("form");
-const titleInput = document.getElementById("title");
-const authorInput = document.getElementById("author");
-const pagesInput = document.getElementById("pages");
-const readInput = document.getElementById("book-read");
+const titleInput = document.getElementById("title-input");
+const authorInput = document.getElementById("author-input");
+const pagesInput = document.getElementById("pages-input");
+const readInput = document.getElementById("read-input");
+const notReadInput = document.getElementById("not-read-input");
 const submitButton = document.getElementById("submit-button");
-
 const section = document.getElementById("section");
 const sliderButtons = document.querySelectorAll("slider-btn")
 const prevBtn = document.getElementsByClassName("prev");
