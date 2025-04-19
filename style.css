@@ -55,7 +55,7 @@ body {
     padding: 1.5rem;
     margin-right: 2rem;
     border-radius: 50%;
-    background-color: rgb(21, 37, 3);
+    background-color: rgb(48, 77, 12);
     color: rgb(255, 255, 255);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.622);
 }
@@ -75,19 +75,36 @@ body {
     background-color: #9d794398;
 }
 
-.form-heading {
+#form-heading {
     margin-bottom: 25px;
-    font-size: 1.6rem;
-    color: rgb(194, 12, 12);
+    font-size: 1.0rem;
+    color: rgb(118, 65, 131);
+    margin: 10px;
+    background-color: rgba(114, 148, 72, 0.705);
+    border-color: rgba(60, 71, 47, 0.863);
+    padding: 0.5rem;
+    border-radius: 10%;
+    /* color: white; */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.382);
 }
 
-form>div {
+#form {
+    visibility: hidden;
+}
+
+
+#form> div {
+    margin-top: 20px;
     margin-bottom: 15px;
+    /* visibility: hidden; */
 }
 
 input {
     margin-left: 0.5rem;
     padding-left: 0.3rem;
+    border-radius: 0.2rem;
+    background-color: rgb(226, 223, 223);
+    font-size: 0.7rem;
 }
 
 input:invalid {
@@ -100,11 +117,13 @@ input:focus {
     box-shadow: 0.4px 6px 6px rgb(176, 173, 173);
 }
 
+
 .book-read {
     margin-bottom: 5px;
 }
 
 #submit-button {
+    visibility: hidden;
     font-size: 1rem;
     margin: 10px;
     background-color: rgb(42, 72, 6);
@@ -122,6 +141,7 @@ input:focus {
     background-color: rgb(57, 97, 57);
     display: grid;
     grid-template-columns: 4fr 1fr;
+    border-radius: 0.4rem;
 }
 
 .search>input {
@@ -152,9 +172,9 @@ input:focus {
 
 .section-heading {
     text-shadow:
-        0 0 7px rgb(154, 14, 14),
-        0 0 10px rgb(154, 14, 14),
-        0 0 21px rgb(154, 14, 14),
+        0 0 7px rgb(119, 99, 12),
+        0 0 10px rgb(119, 99, 12),
+        0 0 21px rgb(119, 99, 12),
         0 0 42px rgba(255, 255, 255),
         0 0 82px rgba(255, 255, 255),
         0 0 92px rgba(255, 255, 255),
@@ -163,8 +183,8 @@ input:focus {
     font-size: 3rem;
     margin: 3rem 0 0rem 2rem;
     font-family: "Spicy_Rice", Verdana, Geneva, Tahoma, sans-serif;
-    -webkit-text-stroke: 0.1px rgba(255, 255, 255);
-    color: rgb(194, 12, 12);
+    -webkit-text-stroke: 0.1px rgb(193, 188, 188);
+    color:rgb(73, 44, 80);
     float: left;
 }
 
@@ -178,7 +198,7 @@ input:focus {
     overflow-x: hidden;
     background-color: rgba(255, 255, 255, 0.8);
     border: 0.5rem solid rgb(214, 12, 12);
-    border-image:  linear-gradient(to bottom right, rgb(85, 6, 6), rgb(255, 101, 101)) 1;
+    border-image:  linear-gradient(to bottom right, rgb(53, 2, 66), rgb(173, 7, 214)) 1;
 }
 
 
@@ -246,19 +266,19 @@ input:focus {
     outline: 1px solid black;
 }
 
-.slider-btn.prev {
+#prev {
     left: 0.2rem;
 }
 
-.slider-btn.next {
+#next {
     right: 0.2rem;
 }
 
-li {
+/* li {
     list-style: none;
-}
+} */
 
-.book-display {
+/* .book-display {
     padding: 0.001px;
     border-radius: 8px;
     background-image: linear-gradient(to bottom right,rgb(21, 37, 3), rgb(41, 71, 6));
@@ -268,7 +288,7 @@ li {
     min-width: 16rem;
     width: 100%;
     margin: 20px;
-}
+} */
 
 /* .display-title {
     font-size: 3rem;
