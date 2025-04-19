@@ -19,22 +19,22 @@
         </div>
 
         <div class="sidebar">
-            <div class="form-heading">Add a New Book</div>
+            <button id="form-heading"><strong>Add a New Book</strong></button>
             <div>
-                <form action="/" method="post">
+                <form id="form" action="/" method="post">
                     <div>
                         <label for="title-input">Title</label>
                         <input type="text" id="title-input" name="title-input" placeholder="Book title" required><br>
                     </div>
-                    <div>
+                    <div >
                         <label for="author-input">Author</label>
                         <input type="text" id="author-input" name="author-input"><br>
                     </div>
-                    <div>
+                    <div >
                         <label for="pages-input">Pages</label>
                         <input type="number" id="pages-input" name="pages-input" min="10" max="2000"><br>
                     </div>
-                    <div>
+                    <div >
                         <!-- <div class="book-read">Has this book been read?</div> -->
                         <input type="radio" id="read-input" name="read-input">
                         <label for="read-input">Read</label>
@@ -42,7 +42,7 @@
                         <label for="not-read-input">Not Read Yet</label>
                     </div>
             </div>
-            <button type="submit" id="submit-button">ADD</button>
+            <button type="submit" id="submit-button" >ADD</button>
             </form>
             <div class="search">
                 <input type="text" name="search" id="search" placeholder="Search the book Library">
@@ -53,44 +53,9 @@
             <div class="section-heading">MY FAVORITE BOOK COLLECTION</div>
             <div class="slider">
                 <div class="section" id="section">
-                    <button class="slider-btn prev" onclick="prevBookCard()">&#60;</button>
-                    <button class="slider-btn next" onclick="nextBookCard()">&#62;</button>
-                    <ul class="book-display" id="one">
-                        <!-- <li class="display-bookId">Book Id</li>
-                        <li class="display-author">author</li>
-                        <li class="display-pages">pages</li>
-                        <li class="display-read">read</li>
-                        <li class="display-title">title</li> -->
-                    </ul>
-                    <ul class="book-display" id="two">
-                        <!-- <li class="display-bookId">Book Id</li>
-                        <li class="display-author">author</li>
-                        <li class="display-pages">pages</li>
-                        <li class="display-read">read</li>
-                        <li class="display-title">title</li> -->
-                    </ul>
-                    <ul class="book-display" id="three">
-                        <!-- <li class="display-bookId">Book Id</li>
-                        <li class="display-author">author</li>
-                        <li class="display-pages">pages</li>
-                        <li class="display-read">read</li>
-                        <li class="display-title">title</li> -->
-                    </ul>
-                    <ul class="book-display" id="four">
-                        <!-- <li class="display-bookId">Book Id</li>
-                        <li class="display-author">author</li>
-                        <li class="display-pages">pages</li>
-                        <li class="display-read">read</li>
-                        <li class="display-title">title</li> -->
-                    </ul>
+                    <button class="slider-btn" id="prev" >&#60;</button>
+                    <button class="slider-btn" id="next" >&#62;</button>
                     
-                    <ul class="book-display" id="five">
-                        <!-- <li class="display-bookId">Book Id</li>
-                        <li class="display-author">author</li>
-                        <li class="display-pages">pages</li>
-                        <li class="display-read">read</li>
-                        <li class="display-title">title</li> -->
-                    </ul>
                 </div>
             </div>
 
