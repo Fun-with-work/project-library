@@ -1,6 +1,6 @@
 // >> declare variables for the html elements
 let formElement = document.getElementById("form");
-const formVisible = document.getElementById("form-heading");
+const addBookBtn = document.getElementById("form-heading");
 const titleInput = document.getElementById("title-input");
 const authorInput = document.getElementById("author-input");
 const pagesInput = document.getElementById("pages-input");
@@ -12,56 +12,45 @@ let sliderButtons = document.querySelectorAll("slider-btn")
 let prevBtn = document.getElementById("prev");
 let nextBtn = document.getElementById("next");
 
-// >> declare variables for book display
-let card;
-let displayTitle;
-let displayAuthor;
-let displayPages;
-let displayRead;
-let displayId;
 const myLibrary = [];
-let removeButton;
-// let readStatus;
-
-// >> declare styles
-const styles = {
-    fontSize: "1rem",
-    padding: "0.2rem 0.5rem 0.2rem 0rem",
-    margin : "auto",
-    color: "rgb(222, 226, 217)",
-
-}
-const btnStyles = {
-    backgroundColor : "rgb(207, 203, 203)",
-    borderRadius : "0.6rem",
-    border : "1px solid rgb(226, 223, 223)",
-    padding : "0.3rem 0.3rem 0.3rem 1.5rem",
-    width : "30%",
-    color : "rgb(58, 57, 57)",    
-    fontSize: "1rem",
-    margin : "auto",
-    padding: "auto",
-    boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.622)"
-}
 
 let color1 = "linear-gradient(to bottom right,rgb(97, 103, 15), rgb(108, 110, 41))";
 
 let color2 = "linear-gradient(to bottom right,rgb(133, 49, 53), rgb(179, 86, 90))";
 
-const cardStyles = {
-    listStyle: "none",
-    color: "rgb(255, 255, 255)",
-    display: "grid",
-    gridTemplateRows: "10rem 2rem 2rem 2rem 2rem 2rem",
-    // padding: "0.001px",
-    borderRadius: "8px",
-    backgroundImage: color1,
-    // "linear-gradient(to bottom right,rgb(88, 91, 48), rgb(134, 135, 97))",
-    boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.622)",
-    minHeight: "24rem",
-    minWidth: "16rem",
-    width: "100%",
-    margin: "20px"
+let color3 = "linear-gradient(to bottom right,rgb(33, 105, 124), rgb(61, 136, 157))";
+
+let color4 = "linear-gradient(to bottom right,rgb(187, 144, 5), rgb(201, 156, 6))";
+
+const colorArray = [];
+colorArray.push (color1, color2, color3, color4);
+let currentColorIndex = 0;
+
+function getNewColor () {
+    const color = colorArray [currentColorIndex];
+    currentColorIndex = (currentColorIndex + 1);
+    return color;
+}
+
+// >> declare styles
+const bookElementStyles = {
+    fontSize: "1rem",
+    padding: "0.2rem 0.5rem 0.2rem 0rem",
+    margin: "auto",
+    color: "rgb(222, 226, 217)",
+}
+
+const btnStyles = {
+    backgroundColor: "rgb(207, 203, 203)",
+    borderRadius: "0.6rem",
+    border: "1px solid rgb(226, 223, 223)",
+    padding: "0.3rem 0.3rem 0.3rem 1.5rem",
+    width: "30%",
+    color: "rgb(58, 57, 57)",
+    fontSize: "1rem",
+    margin: "auto",
+    padding: "auto",
+    boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.622)"
 }
 
 const titleStyles = {
@@ -73,8 +62,7 @@ const titleStyles = {
     margin: "auto"
 }
 
-formVisible.addEventListener("click", function(e) {
-    
+addBookBtn.addEventListener("click", function (e) {
     submitButton.style.visibility = "visible";
     formElement.style.visibility = "visible";
 })
@@ -88,57 +76,31 @@ function Book(title, author, pages, read, bookId) {
     return;
 }
 
-// function addBookToLibrary(title, author, pages, read, bookId) {
-//     if (titleInput == null || titleInput == "") {
-//         alert("Please enter the book title.");
-//         return;
-//     } else {
-        // title.textContent = titleInput.value;
-        // author.textContent = authorInput.value;
-        // pages.textContent = pagesInput.value;
-        // read.textContent = readInput.checked;
-        // bookId = crypto.randomUUID();
-
-        // titleInput.value = "";
-        // authorInput.value = "";
-        // pagesInput.value = "";
-        // readInput.value = "";
-    // }
-    // let book = new Book(title, author, pages, read, bookId);
-//     book = "";
-//     return;
-// };
-
-
-
 submitButton.addEventListener("click", e => {
     e.preventDefault();
-    
+
     const title = titleInput.value;
     const author = authorInput.value;
     const pages = pagesInput.value;
     const read = readInput.checked;
     const bookId = crypto.randomUUID();
-    
-    if(!title) {
-        alert ("Please enter the book title.");
+
+    if (!title) {
+        alert("Please enter the book title.");
         formElement.reset();
         formElement.style.visibility = "hidden";
         submitButton.style.visibility = "hidden";
         return;
     }
-    
+
     const newBook = new Book(title, author, pages, read, bookId)
     myLibrary.push(newBook);
-    
     bookCards(myLibrary);
-    
+
     alert("The form can not be submitted.");
     formElement.reset();
     formElement.style.visibility = "hidden";
     submitButton.style.visibility = "hidden";
-
-
 });
 
 // >> manually create books and add to library array
@@ -157,55 +119,61 @@ myLibrary.push(book1, book2, book3, book4, book5, book6, book7, book8, book9, bo
 
 console.log(myLibrary);
 
-let n = 0;
 // let k = 0;
 
 // nextBtn.addEventListener("click", event => {
-    // k += 1;
+//     k += 1;
 
-    // for (j = 0; j < myLibrary.length; j++) {
-        
-        // displayTitle.textContent = (myLibrary[k].title);
-        // displayAuthor.textContent = (myLibrary[k].author);
-        // displayPages.textContent = (myLibrary[k].pages);
-        // displayRead.textContent = (myLibrary[k].read);
-        // displayId.textContent = (myLibrary[k].bookId);
-        // console.log(k);
-        
+//     for (j = 0; j < myLibrary.length; j++) {
+
+//         displayTitle.textContent = (myLibrary[k].title);
+//         displayAuthor.textContent = (myLibrary[k].author);
+//         displayPages.textContent = (myLibrary[k].pages);
+//         displayRead.textContent = (myLibrary[k].read);
+//         displayId.textContent = (myLibrary[k].bookId);
+//         console.log(k);
 //     }
 // });
-
-
-
 
 function bookCards(myLibrary) {
     section.innerHTML = "";
 
     for (i = 0; i < myLibrary.length; i++) {
-        const book  = myLibrary[i];
-        
-        card = document.createElement("ul");
-                displayTitle = document.createElement("li");
-        
-                displayAuthor = document.createElement("li");
-                displayPages = document.createElement("li");
-                displayId = document.createElement("li");
-                displayRead = document.createElement("button");
-                removeButton = document.createElement("button");
-                displayRead.className = "readBtn";
-        
-        
-                Object.assign(card.style, cardStyles)
-                Object.assign(displayTitle.style, titleStyles)
-                Object.assign(displayAuthor.style, styles)
-                Object.assign(displayPages.style, styles)
-                Object.assign(displayRead.style, btnStyles)
-                Object.assign(displayId.style, styles)
-                Object.assign(removeButton.style, btnStyles)
-                displayAuthor.style.fontSize = "1.5rem";
-        
-                section.appendChild(card);
-        
+        const book = myLibrary[i];
+
+        const card = document.createElement("ul");
+        const displayTitle = document.createElement("li");
+        const displayAuthor = document.createElement("li");
+        const displayPages = document.createElement("li");
+        const displayId = document.createElement("li");
+        const displayRead = document.createElement("button");
+        const removeButton = document.createElement("button");
+        displayRead.className = "readBtn";
+
+        const backgroundColor = getNewColor();
+
+        Object.assign(card.style, {
+            listStyle: "none",
+            color: "rgb(255, 255, 255)",
+            display: "grid",
+            gridTemplateRows: "10rem 2rem 2rem 2rem 2rem 2rem",
+            borderRadius: "6px",
+            backgroundImage: backgroundColor, 
+            boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.622)",
+            minHeight: "24rem",
+            minWidth: "16rem",
+            width: "100%",
+            margin: "20px"   
+        } );
+
+        Object.assign(displayTitle.style, titleStyles)
+        Object.assign(displayAuthor.style, bookElementStyles)
+        Object.assign(displayPages.style, bookElementStyles)
+        Object.assign(displayRead.style, btnStyles)
+        Object.assign(displayId.style, bookElementStyles)
+        Object.assign(removeButton.style, btnStyles)
+        displayAuthor.style.fontSize = "1.5rem";
+        section.appendChild(card);
 
         card.appendChild(displayTitle);
         card.appendChild(displayAuthor);
@@ -213,53 +181,40 @@ function bookCards(myLibrary) {
         card.appendChild(displayId);
         card.appendChild(displayRead);
         card.appendChild(removeButton);
-        
 
         displayTitle.textContent = book.title;
         displayAuthor.textContent = book.author;
         displayPages.textContent = book.pages;
-        displayRead.textContent = book.read;
+        displayRead.textContent = book.read ? "read" : "not read";
         displayId.textContent = "Id : " + (book.bookId);
         removeButton.textContent = "remove";
         removeButton.dataset.index = i;
+        displayRead.dataset.index = i;
 
         removeButton.addEventListener("click", removeBookFromLibrary);
+
+        displayRead.addEventListener("click", changeReadStatus);
     }
-    
 }
 
 function removeBookFromLibrary(e) {
     const indexToRemoveBook = e.target.dataset.index;
     myLibrary.splice(indexToRemoveBook, 1);
+    currentColorIndex= 0;
     bookCards(myLibrary);
 }
 
-// console.log(displayTitleG.textContent);
+function changeReadStatus(e) {
+    const toggleReadIndex = e.target.dataset.index;
+    const bookToUpdate = myLibrary[toggleReadIndex];
+    bookToUpdate.read = !bookToUpdate.read;
+    currentColorIndex= 0;
+    bookCards(myLibrary);
+}
 
 bookCards(myLibrary);
 
-// let remBk = "Yes";
 
-
-// removeBook.forEach(item => {
-    
-//     item.addEventListener('click', event=> {
-//         let remBk = prompt("Do you want to delete this book?", "Yes");
-        
-//         if (remBk == null || remBk == "") {
-//             alert("You have cancelled this request.");
-//         } else {
-//             alert("It will be deleted by a new function to be created");
-//         }
-        
-//     })
-    
-// });
-
-// displayRead.addEventListener('click', event=> {
-//     read.style.color = "brown";
-//     return;
-// })
 
 
 
