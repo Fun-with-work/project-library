@@ -19,22 +19,22 @@
         </div>
 
         <div class="sidebar">
-            <button id="form-heading"><strong>Add a New Book</strong></button>
+            <button id="form-heading"><strong>NEW BOOK</strong><br><em>click to add</em></button>
             <div>
                 <form id="form" action="/" method="post">
                     <div>
                         <label for="title-input">Title</label>
                         <input type="text" id="title-input" name="title-input" placeholder="Book title" required><br>
                     </div>
-                    <div >
+                    <div>
                         <label for="author-input">Author</label>
                         <input type="text" id="author-input" name="author-input"><br>
                     </div>
-                    <div >
+                    <div>
                         <label for="pages-input">Pages</label>
                         <input type="number" id="pages-input" name="pages-input" min="10" max="2000"><br>
                     </div>
-                    <div >
+                    <div>
                         <!-- <div class="book-read">Has this book been read?</div> -->
                         <input type="radio" id="read-input" name="read-input">
                         <label for="read-input">Read</label>
@@ -42,20 +42,22 @@
                         <label for="not-read-input">Not Read Yet</label>
                     </div>
             </div>
-            <button type="submit" id="submit-button" >ADD</button>
+            <button type="submit" id="submit-button">ADD</button>
             </form>
             <div class="search">
-                <input type="text" name="search" id="search" placeholder="Search the book Library">
+                <input type="text" name="search" id="search" placeholder="Search a book title">
                 <button type="submit" id="search-button">SEARCH</SEARCH></button>
+            </div>
+            <div id="display-result">
             </div>
         </div>
         <div class="main-content">
             <div class="section-heading">MY FAVORITE BOOK COLLECTION</div>
             <div class="slider">
                 <div class="section" id="section">
-                    <button class="slider-btn" id="prev" >&#60;</button>
-                    <button class="slider-btn" id="next" >&#62;</button>
-                    
+                    <button class="slider-btn" id="prev">&#60;</button>
+                    <button class="slider-btn" id="next">&#62;</button>
+
                 </div>
             </div>
 
