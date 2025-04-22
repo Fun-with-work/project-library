@@ -7,12 +7,15 @@ const pagesInput = document.getElementById("pages-input");
 const readInput = document.getElementById("read-input");
 const notReadInput = document.getElementById("not-read-input");
 const submitButton = document.getElementById("submit-button");
+const searchTitle = document.getElementById("search");
+const searchButton = document.getElementById("search-button");
+const displayResult = document.getElementById("display-result");
 const section = document.getElementById("section");
 let sliderButtons = document.querySelectorAll("slider-btn")
 let prevBtn = document.getElementById("prev");
 let nextBtn = document.getElementById("next");
 
-const myLibrary = [];
+const myLibraryBooks = [];
 
 let color1 = "linear-gradient(to bottom right,rgb(97, 103, 15), rgb(108, 110, 41))";
 
@@ -68,7 +71,7 @@ addBookBtn.addEventListener("click", function (e) {
 })
 
 function Book(title, author, pages, read, bookId) {
-    this.title = title;
+    this.title = title.toUpperCase();
     this.author = author;
     this.pages = pages + " pages";
     this.read = read;
@@ -78,13 +81,14 @@ function Book(title, author, pages, read, bookId) {
 
 submitButton.addEventListener("click", e => {
     e.preventDefault();
-
-    const title = titleInput.value;
+    
+    const titleInputUpperCase = titleInput.value.toUpperCase();
+    const title = titleInputUpperCase.value;
     const author = authorInput.value;
     const pages = pagesInput.value;
     const read = readInput.checked;
     const bookId = crypto.randomUUID();
-
+    
     if (!title) {
         alert("Please enter the book title.");
         formElement.reset();
@@ -94,14 +98,38 @@ submitButton.addEventListener("click", e => {
     }
 
     const newBook = new Book(title, author, pages, read, bookId)
-    myLibrary.push(newBook);
-    bookCards(myLibrary);
+    myLibraryBooks.push(newBook);
+    bookCards(myLibraryBooks);
 
     alert("The form can not be submitted.");
     formElement.reset();
     formElement.style.visibility = "hidden";
     submitButton.style.visibility = "hidden";
 });
+
+searchButton.addEventListener("click", function(e) {
+    displayResult.innerHTML = "";
+
+    let searchTitleUpperCase = searchTitle.value.toUpperCase();
+
+    searchTitle.value="";
+    const findBook = myLibraryBooks.find (item => item.title === searchTitleUpperCase);
+    
+    if(findBook) {
+        const bookDetails = Object.entries(findBook);
+        bookDetails.forEach(([key, value]) => {
+            const detailElement = document.createElement("p");
+            detailElement.textContent = `${key}: ${value}`;
+            displayResult.appendChild(detailElement);
+            detailElement.style.padding = "0.6rem";
+        });
+        displayResult.style.visibility= "visible";
+
+    }  else {
+        displayResult.textContent = " Book not found";
+        displayResult.style.visibility = "visible";
+    }
+})
 
 // >> manually create books and add to library array
 let book1 = new Book('The Hobbit', 'J. R. R. Tolkien', '295', 'not read');
@@ -110,36 +138,36 @@ let book3 = new Book('The Count of Monte Cristo', 'Alexandre Dumas', '1312', 'no
 let book4 = new Book('Great Expectations', 'Charles Dickens', '544', 'read');
 let book5 = new Book('Crime and Punishment', 'Fyodor Dostoevsky', '320', 'not read');
 let book6 = new Book(`One Flew Over the Cuckoo's Nest`, 'Ken Kesey', '527 pages', 'not read');
-let book7 = new Book('Moby-Dick', 'Herman Melville', '635', 'not read');
-let book8 = new Book('Catch-22', 'Joseph Heller', '453', 'not read');
+let book7 = new Book('Moby Dick', 'Herman Melville', '635', 'not read');
+let book8 = new Book('Catch 22', 'Joseph Heller', '453', 'not read');
 let book9 = new Book('Frankenstein', 'Mary Shelley', '280', 'read');
 let book10 = new Book('Macbeth', 'Mary Shakespeare', '200', 'not read');
 
-myLibrary.push(book1, book2, book3, book4, book5, book6, book7, book8, book9, book10);
+myLibraryBooks.push(book1, book2, book3, book4, book5, book6, book7, book8, book9, book10);
 
-console.log(myLibrary);
+console.log(myLibraryBooks);
 
 // let k = 0;
 
 // nextBtn.addEventListener("click", event => {
 //     k += 1;
 
-//     for (j = 0; j < myLibrary.length; j++) {
+//     for (j = 0; j < myLibraryBooks.length; j++) {
 
-//         displayTitle.textContent = (myLibrary[k].title);
-//         displayAuthor.textContent = (myLibrary[k].author);
-//         displayPages.textContent = (myLibrary[k].pages);
-//         displayRead.textContent = (myLibrary[k].read);
-//         displayId.textContent = (myLibrary[k].bookId);
+//         displayTitle.textContent = (myLibraryBooks[k].title);
+//         displayAuthor.textContent = (myLibraryBooks[k].author);
+//         displayPages.textContent = (myLibraryBooks[k].pages);
+//         displayRead.textContent = (myLibraryBooks[k].read);
+//         displayId.textContent = (myLibraryBooks[k].bookId);
 //         console.log(k);
 //     }
 // });
 
-function bookCards(myLibrary) {
+function bookCards(myLibraryBooks) {
     section.innerHTML = "";
 
-    for (i = 0; i < myLibrary.length; i++) {
-        const book = myLibrary[i];
+    for (i = 0; i < myLibraryBooks.length; i++) {
+        const book = myLibraryBooks[i];
 
         const card = document.createElement("ul");
         const displayTitle = document.createElement("li");
@@ -199,20 +227,20 @@ function bookCards(myLibrary) {
 
 function removeBookFromLibrary(e) {
     const indexToRemoveBook = e.target.dataset.index;
-    myLibrary.splice(indexToRemoveBook, 1);
+    myLibraryBooks.splice(indexToRemoveBook, 1);
     currentColorIndex= 0;
-    bookCards(myLibrary);
+    bookCards(myLibraryBooks);
 }
 
 function changeReadStatus(e) {
     const toggleReadIndex = e.target.dataset.index;
-    const bookToUpdate = myLibrary[toggleReadIndex];
+    const bookToUpdate = myLibraryBooks[toggleReadIndex];
     bookToUpdate.read = !bookToUpdate.read;
     currentColorIndex= 0;
-    bookCards(myLibrary);
+    bookCards(myLibraryBooks);
 }
 
-bookCards(myLibrary);
+bookCards(myLibraryBooks);
 
 
 
