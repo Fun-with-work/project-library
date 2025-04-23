@@ -26,18 +26,18 @@ let color3 = "linear-gradient(to bottom right,rgb(33, 105, 124), rgb(61, 136, 15
 let color4 = "linear-gradient(to bottom right,rgb(187, 144, 5), rgb(201, 156, 6))";
 
 const colorArray = [];
-colorArray.push (color1, color2, color3, color4);
+colorArray.push(color1, color2, color3, color4);
 let currentColorIndex = 0;
 
-function getNewColor () {
+function getNewColor() {
     if (currentColorIndex >= colorArray.length) {
         currentColorIndex = 0;
-        const color = colorArray [currentColorIndex];
+        const color = colorArray[currentColorIndex];
         currentColorIndex = (currentColorIndex + 1);
         return color;
-        
+
     } else {
-        const color = colorArray [currentColorIndex];
+        const color = colorArray[currentColorIndex];
         currentColorIndex = (currentColorIndex + 1);
         return color;
     }
@@ -89,14 +89,14 @@ function Book(title, author, pages, read, bookId) {
 
 submitButton.addEventListener("click", e => {
     e.preventDefault();
-    
+
     const titleInputUpperCase = titleInput.value.toUpperCase();
     const title = titleInputUpperCase.value;
     const author = authorInput.value;
     const pages = pagesInput.value;
     const read = readInput.checked;
     const bookId = crypto.randomUUID();
-    
+
     if (!title) {
         alert("Please enter the book title.");
         formElement.reset();
@@ -107,7 +107,7 @@ submitButton.addEventListener("click", e => {
 
     const newBook = new Book(title, author, pages, read, bookId)
     myLibraryBooks.push(newBook);
-    
+
     updateSlider(myLibraryBooks);
 
     alert("The form can not be submitted.");
@@ -116,15 +116,15 @@ submitButton.addEventListener("click", e => {
     submitButton.style.visibility = "hidden";
 });
 
-searchButton.addEventListener("click", function(e) {
+searchButton.addEventListener("click", function (e) {
     displayResult.innerHTML = "";
 
     let searchTitleUpperCase = searchTitle.value.toUpperCase();
 
-    searchTitle.value="";
-    const findBook = myLibraryBooks.find (item => item.title === searchTitleUpperCase);
-    
-    if(findBook) {
+    searchTitle.value = "";
+    const findBook = myLibraryBooks.find(item => item.title === searchTitleUpperCase);
+
+    if (findBook) {
         const bookDetails = Object.entries(findBook);
         bookDetails.forEach(([key, value]) => {
             const detailElement = document.createElement("p");
@@ -132,9 +132,9 @@ searchButton.addEventListener("click", function(e) {
             displayResult.appendChild(detailElement);
             detailElement.style.padding = "0.6rem";
         });
-        displayResult.style.visibility= "visible";
+        displayResult.style.visibility = "visible";
 
-    }  else {
+    } else {
         displayResult.textContent = " Book not found";
         displayResult.style.visibility = "visible";
     }
@@ -157,90 +157,101 @@ myLibraryBooks.push(book1, book2, book3, book4, book5, book6, book7, book8, book
 console.log(myLibraryBooks);
 
 let bookIndex = 0;
+const booksPerPage = 4;
 
 function updateSlider() {
     section.innerHTML = "";
-    const book = myLibraryBooks[bookIndex % myLibraryBooks.length];
-    if (book) {
-        const card = document.createElement("ul");
-        const displayTitle = document.createElement("li");
-        const displayAuthor = document.createElement("li");
-        const displayPages = document.createElement("li");
-        const displayId = document.createElement("li");
-        const displayReadButton = document.createElement("button");
-        const removeButton = document.createElement("button");
-        displayReadButton.className = "readBtn";
+    for (let i = 0; i <= booksPerPage; i++) {
+        const index = (bookIndex + i) % myLibraryBooks.length;
+        const book = myLibraryBooks[index];
+        if (book) {
+            const card = document.createElement("ul");
+            const displayTitle = document.createElement("li");
+            const displayAuthor = document.createElement("li");
+            const displayPages = document.createElement("li");
+            const displayId = document.createElement("li");
+            const displayReadButton = document.createElement("button");
+            const removeButton = document.createElement("button");
+            displayReadButton.className = "readBtn";
 
-        const backgroundColor = getNewColor();
+            const backgroundColor = getNewColor();
 
-        Object.assign(card.style, {
-            listStyle: "none",
-            color: "rgb(255, 255, 255)",
-            display: "grid",
-            gridTemplateRows: "10rem 2rem 2rem 2rem 2rem 2rem",
-            borderRadius: "6px",
-            backgroundImage: backgroundColor, 
-            boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.622)",
-            minHeight: "24rem",
-            minWidth: "16rem",
-            width: "100%",
-            margin: "20px"   
-        } );
+            Object.assign(card.style, {
+                listStyle: "none",
+                color: "rgb(255, 255, 255)",
+                display: "grid",
+                gridTemplateRows: "10rem 2rem 2rem 2rem 2rem 2rem",
+                borderRadius: "6px",
+                backgroundImage: backgroundColor,
+                boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.622)",
+                minHeight: "24rem",
+                minWidth: "16rem",
+                width: "100%",
+                margin: "20px"
+            });
 
-        Object.assign(displayTitle.style, titleStyles)
-        Object.assign(displayAuthor.style, bookElementStyles)
-        Object.assign(displayPages.style, bookElementStyles)
-        Object.assign(displayReadButton.style, btnStyles)
-        Object.assign(displayId.style, bookElementStyles)
-        Object.assign(removeButton.style, btnStyles)
-        displayAuthor.style.fontSize = "1.5rem";
-        section.appendChild(card);
+            Object.assign(displayTitle.style, titleStyles)
+            Object.assign(displayAuthor.style, bookElementStyles)
+            Object.assign(displayPages.style, bookElementStyles)
+            Object.assign(displayReadButton.style, btnStyles)
+            Object.assign(displayId.style, bookElementStyles)
+            Object.assign(removeButton.style, btnStyles)
+            displayAuthor.style.fontSize = "1.5rem";
+            section.appendChild(card);
 
-        card.appendChild(displayTitle);
-        card.appendChild(displayAuthor);
-        card.appendChild(displayPages);
-        card.appendChild(displayId);
-        card.appendChild(displayReadButton);
-        card.appendChild(removeButton);
+            card.appendChild(displayTitle);
+            card.appendChild(displayAuthor);
+            card.appendChild(displayPages);
+            card.appendChild(displayId);
+            card.appendChild(displayReadButton);
+            card.appendChild(removeButton);
 
-        displayTitle.textContent = book.title;
-        displayAuthor.textContent = "by " + book.author;
-        displayPages.textContent = book.pages;
-        displayReadButton.textContent = book.read ? "read" : "not read";
-        displayId.textContent = "Id : " + (book.bookId);
-        removeButton.textContent = "remove";
-        removeButton.dataset.index = bookIndex % myLibraryBooks.length;
-        displayReadButton.dataset.index = bookIndex % myLibraryBooks.length;
+            displayTitle.textContent = book.title;
+            displayAuthor.textContent = "by " + book.author;
+            displayPages.textContent = book.pages;
+            displayReadButton.textContent = book.read ? "read" : "not read";
+            displayId.textContent = "Id : " + (book.bookId);
+            removeButton.textContent = "remove";
+            removeButton.dataset.index =index;
+            displayReadButton.dataset.index = index;
 
-        removeButton.addEventListener("click", removeBookFromLibrary);
+            removeButton.addEventListener("click", removeBookFromLibrary);
 
-        displayReadButton.addEventListener("click", changeReadStatus);
+            displayReadButton.addEventListener("click", changeReadStatus);
+        }
     }
 }
 
-prevBtn.addEventListener("click", () =>{
-    bookIndex--;
+prevBtn.addEventListener("click", () => {
+    bookIndex = (bookIndex - booksPerPage + myLibraryBooks.length) % myLibraryBooks.length;
     updateSlider();
 });
 
-nextBtn.addEventListener("click", () =>{
-    bookIndex++;
+nextBtn.addEventListener("click", () => {
+    bookIndex = (bookIndex + booksPerPage) % myLibraryBooks.length;
     updateSlider();
 });
 
 function removeBookFromLibrary(e) {
-    const indexToRemoveBook = e.target.dataset.index;
+    const indexToRemoveBook = parseInt(e.target.dataset.index);
     myLibraryBooks.splice(indexToRemoveBook, 1);
-    currentColorIndex= 0;
+    currentColorIndex = 0;
+    if (indexToRemoveBook < bookIndex && myLibraryBooks.length > 0) {
+        bookIndex--;
+    } else if (bookIndex >= myLibraryBooks.length) {
+        bookIndex = Math.max (0, myLibraryBooks.length - booksPerPage);
+    }
+
     updateSlider(myLibraryBooks);
 }
 
 function changeReadStatus(e) {
-    const toggleReadIndex = e.target.dataset.index;
-    const bookToUpdate = myLibraryBooks[toggleReadIndex];
-    bookToUpdate.read = !bookToUpdate.read;
-    currentColorIndex= 0;
-    updateSlider(myLibraryBooks);
+    const toggleReadIndex = parseInt (e.target.dataset.index);
+    if (myLibraryBooks[toggleReadIndex]) {
+        myLibraryBooks[toggleReadIndex].read = !myLibraryBooks[toggleReadIndex].read;
+        currentColorIndex = 0;
+        updateSlider(myLibraryBooks);
+    }
 }
 
 updateSlider(myLibraryBooks);
