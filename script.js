@@ -30,9 +30,17 @@ colorArray.push (color1, color2, color3, color4);
 let currentColorIndex = 0;
 
 function getNewColor () {
-    const color = colorArray [currentColorIndex];
-    currentColorIndex = (currentColorIndex + 1);
-    return color;
+    if (currentColorIndex >= colorArray.length) {
+        currentColorIndex = 0;
+        const color = colorArray [currentColorIndex];
+        currentColorIndex = (currentColorIndex + 1);
+        return color;
+        
+    } else {
+        const color = colorArray [currentColorIndex];
+        currentColorIndex = (currentColorIndex + 1);
+        return color;
+    }
 }
 
 // >> declare styles
@@ -99,7 +107,8 @@ submitButton.addEventListener("click", e => {
 
     const newBook = new Book(title, author, pages, read, bookId)
     myLibraryBooks.push(newBook);
-    bookCards(myLibraryBooks);
+    
+    updateSlider(myLibraryBooks);
 
     alert("The form can not be submitted.");
     formElement.reset();
@@ -147,36 +156,20 @@ myLibraryBooks.push(book1, book2, book3, book4, book5, book6, book7, book8, book
 
 console.log(myLibraryBooks);
 
-// let k = 0;
+let bookIndex = 0;
 
-// nextBtn.addEventListener("click", event => {
-//     k += 1;
-
-//     for (j = 0; j < myLibraryBooks.length; j++) {
-
-//         displayTitle.textContent = (myLibraryBooks[k].title);
-//         displayAuthor.textContent = (myLibraryBooks[k].author);
-//         displayPages.textContent = (myLibraryBooks[k].pages);
-//         displayRead.textContent = (myLibraryBooks[k].read);
-//         displayId.textContent = (myLibraryBooks[k].bookId);
-//         console.log(k);
-//     }
-// });
-
-function bookCards(myLibraryBooks) {
+function updateSlider() {
     section.innerHTML = "";
-
-    for (i = 0; i < myLibraryBooks.length; i++) {
-        const book = myLibraryBooks[i];
-
+    const book = myLibraryBooks[bookIndex % myLibraryBooks.length];
+    if (book) {
         const card = document.createElement("ul");
         const displayTitle = document.createElement("li");
         const displayAuthor = document.createElement("li");
         const displayPages = document.createElement("li");
         const displayId = document.createElement("li");
-        const displayRead = document.createElement("button");
+        const displayReadButton = document.createElement("button");
         const removeButton = document.createElement("button");
-        displayRead.className = "readBtn";
+        displayReadButton.className = "readBtn";
 
         const backgroundColor = getNewColor();
 
@@ -197,7 +190,7 @@ function bookCards(myLibraryBooks) {
         Object.assign(displayTitle.style, titleStyles)
         Object.assign(displayAuthor.style, bookElementStyles)
         Object.assign(displayPages.style, bookElementStyles)
-        Object.assign(displayRead.style, btnStyles)
+        Object.assign(displayReadButton.style, btnStyles)
         Object.assign(displayId.style, bookElementStyles)
         Object.assign(removeButton.style, btnStyles)
         displayAuthor.style.fontSize = "1.5rem";
@@ -207,29 +200,39 @@ function bookCards(myLibraryBooks) {
         card.appendChild(displayAuthor);
         card.appendChild(displayPages);
         card.appendChild(displayId);
-        card.appendChild(displayRead);
+        card.appendChild(displayReadButton);
         card.appendChild(removeButton);
 
         displayTitle.textContent = book.title;
-        displayAuthor.textContent = book.author;
+        displayAuthor.textContent = "by " + book.author;
         displayPages.textContent = book.pages;
-        displayRead.textContent = book.read ? "read" : "not read";
+        displayReadButton.textContent = book.read ? "read" : "not read";
         displayId.textContent = "Id : " + (book.bookId);
         removeButton.textContent = "remove";
-        removeButton.dataset.index = i;
-        displayRead.dataset.index = i;
+        removeButton.dataset.index = bookIndex % myLibraryBooks.length;
+        displayReadButton.dataset.index = bookIndex % myLibraryBooks.length;
 
         removeButton.addEventListener("click", removeBookFromLibrary);
 
-        displayRead.addEventListener("click", changeReadStatus);
+        displayReadButton.addEventListener("click", changeReadStatus);
     }
 }
+
+prevBtn.addEventListener("click", () =>{
+    bookIndex--;
+    updateSlider();
+});
+
+nextBtn.addEventListener("click", () =>{
+    bookIndex++;
+    updateSlider();
+});
 
 function removeBookFromLibrary(e) {
     const indexToRemoveBook = e.target.dataset.index;
     myLibraryBooks.splice(indexToRemoveBook, 1);
     currentColorIndex= 0;
-    bookCards(myLibraryBooks);
+    updateSlider(myLibraryBooks);
 }
 
 function changeReadStatus(e) {
@@ -237,10 +240,10 @@ function changeReadStatus(e) {
     const bookToUpdate = myLibraryBooks[toggleReadIndex];
     bookToUpdate.read = !bookToUpdate.read;
     currentColorIndex= 0;
-    bookCards(myLibraryBooks);
+    updateSlider(myLibraryBooks);
 }
 
-bookCards(myLibraryBooks);
+updateSlider(myLibraryBooks);
 
 
 
