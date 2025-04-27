@@ -5,8 +5,9 @@ const titleInput = document.getElementById("title-input");
 const authorInput = document.getElementById("author-input");
 const pagesInput = document.getElementById("pages-input");
 const readInput = document.getElementById("read-input");
-const notReadInput = document.getElementById("not-read-input");
 const submitButton = document.getElementById("submit-button");
+const resetButton = document.getElementById("reset-button");
+const hideButton = document.getElementById("hide-button");
 const searchTitle = document.getElementById("search");
 const searchButton = document.getElementById("search-button");
 const displayResult = document.getElementById("display-result");
@@ -75,6 +76,8 @@ const titleStyles = {
 
 addBookBtn.addEventListener("click", function (e) {
     submitButton.style.visibility = "visible";
+    resetButton.style.visibility = "visible";
+    hideButton.style.visibility = "visible";
     formElement.style.visibility = "visible";
 })
 
@@ -87,11 +90,26 @@ function Book(title, author, pages, read, bookId) {
     return;
 }
 
+resetButton.addEventListener("click", e => {
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    readInput.checked = "";
+})
+
+hideButton.addEventListener("click", e => {
+    formElement.reset();
+    formElement.style.visibility = "hidden";
+    submitButton.style.visibility = "hidden";
+    resetButton.style.visibility = "hidden";
+    hideButton.style.visibility = "hidden";
+    return;    
+})
+
 submitButton.addEventListener("click", e => {
     e.preventDefault();
 
-    const titleInputUpperCase = titleInput.value.toUpperCase();
-    const title = titleInputUpperCase.value;
+    const title = titleInput.value.toUpperCase();
     const author = authorInput.value;
     const pages = pagesInput.value;
     const read = readInput.checked;
@@ -102,6 +120,8 @@ submitButton.addEventListener("click", e => {
         formElement.reset();
         formElement.style.visibility = "hidden";
         submitButton.style.visibility = "hidden";
+        resetButton.style.visibility = "hidden";
+        hideButton.style.visibility = "hidden";
         return;
     }
 
@@ -114,6 +134,8 @@ submitButton.addEventListener("click", e => {
     formElement.reset();
     formElement.style.visibility = "hidden";
     submitButton.style.visibility = "hidden";
+    resetButton.style.visibility = "hidden";
+    hideButton.style.visibility = "hidden";
 });
 
 searchButton.addEventListener("click", function (e) {
