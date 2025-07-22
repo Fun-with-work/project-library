@@ -81,13 +81,17 @@ addBookBtn.addEventListener("click", function (e) {
     formElement.style.visibility = "visible";
 })
 
-function Book(title, author, pages, read, bookId) {
-    this.title = title.toUpperCase();
-    this.author = author;
-    this.pages = pages + " pages";
-    this.read = read;
-    this.bookId = crypto.randomUUID();
-    return;
+class Book {
+    constructor (title, author, pages, read) {
+        this.title = title.toUpperCase();
+        this.author = author;
+        this.pages = pages + " pages";
+        this.read = read;
+        this.bookId = crypto.randomUUID();
+    }
+    toggleReadIndex() {
+        this.read = !this.read;
+    }
 }
 
 resetButton.addEventListener("click", e => {
